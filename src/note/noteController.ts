@@ -9,7 +9,7 @@ const createNote = async (req:Request,res:Response,next:NextFunction)=>{
    try {
     const file = req.file ? `${envConfig.backendUrl}/${req.file.filename}` : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGdn5ODMa1UxSL5a172LJpZn6EjIX5THCdmA&s'
     const {title,subtitle,description} = req.body 
-    if(!title || !subtitle || !description){
+    if(!title || !subtitle || !description ){
         res.status(400).json({
             message : "Please provide title,subtitle,description"
         })
