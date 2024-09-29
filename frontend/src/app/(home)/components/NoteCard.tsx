@@ -1,24 +1,30 @@
 
+import { Note } from '@/types'
+import Image from 'next/image'
 import React from 'react'
 
-const NoteCard = () => {
+
+const NoteCard = ({notes}: {notes : Note[]}) => {
   return (
-    <div className="flex px-3 py-3 mt-[70px]">
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        <img className="w-full" src="https://tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains" />
-        <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-            <p className="text-gray-700 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et
-                perferendis eaque, exercitationem praesentium nihil.
-            </p>
+    <div className="flex px-3 py-3 mt-[70px] space-x-50">
+  {
+    notes.map((note)=>{
+        return ( 
+            <div className="max-w-sm rounded overflow-hidden shadow-lg" key={note._id}>
+            <Image src={note.file} alt={note.title} width={400} height={200} />
+            <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">{note.title}</div>
+                <p className="text-gray-700 text-base">
+                    {note.subtitle}
+                </p>
+            </div>
+    
         </div>
-        <div className="px-6 py-4">
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#photography</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">#travel</span>
-            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">#winter</span>
-        </div>
-    </div>
+        )
+    })
+  }
+
+    
 </div>
   )
 }
