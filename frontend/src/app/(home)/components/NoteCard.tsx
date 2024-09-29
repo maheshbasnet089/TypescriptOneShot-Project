@@ -1,6 +1,7 @@
 
 import { Note } from '@/types'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 
@@ -18,7 +19,7 @@ const NoteCard = ({notes}: {notes : Note[]}) => {
                     {note.subtitle}
                 </p>
             </div>
-    
+            <Link href={`/note/${note._id}`}>Read More</Link>
         </div>
         )
     })
